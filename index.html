@@ -1,0 +1,1186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Summer Search Proposal</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: Daybreak website system. Warm paper page, square corners, serif display with italic emphasis,
+   tracked uppercase labels, dark photographic bands at open and close, one sticky section bar. Light only. */
+:root{
+  --paper:#F9F8F6;        /* page ground (site --background) */
+  --sand:#F5F0EB;         /* panels, process diagram ground */
+  --card:#FDFAF7;
+  --ink:#1A1A1A;
+  --ink-2:#5A5A5A;
+  --ink-3:#6E6862;
+  --line:#D4D4D4;
+  --hair:#E8E3DD;
+  --terracotta:#C4763A;   /* logo sunburst / diagram bottom row */
+  --terra-ink:#9A5226;    /* terracotta for small text, passes 4.5:1 on paper */
+  --clay:#E0926C;         /* site --primary, used on dark grounds */
+  --steel:#335C67;        /* logo bracket / diagram top row */
+  --night:#2A1F1A;        /* dark bands */
+  --night-2:#2A2522;
+  --on-night:#F5F0EB;
+  --on-night-2:#CFC6BD;
+  --dsb:#E4532B;
+  --serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gut:max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px));
+  --gut-r:max(clamp(16px, 4vw, 48px), env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--steel);outline-offset:3px}
+button{font:inherit;color:inherit}
+.wrap{max-width:1200px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+.narrow{max-width:68ch}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.01em}
+em,.it{font-style:italic}
+p{margin:0}
+.eyebrow{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--terra-ink)}
+.label{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.num{font-variant-numeric:tabular-nums}
+
+/* review layer */
+.review-bar{background:var(--steel);color:#fff;font-size:13px}
+.review-bar .wrap{display:flex;gap:12px 20px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:10px}
+.review-bar b{font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:11px;margin-right:8px}
+.review-bar button{background:transparent;border:1px solid rgba(255,255,255,.5);padding:6px 12px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:#fff}
+.review-bar button:hover{background:rgba(255,255,255,.12)}
+.rv{display:inline-block;font-family:var(--sans);font-style:normal;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);border:1px solid var(--steel);padding:2px 6px;vertical-align:middle;margin-left:8px;line-height:1.4}
+.rv-note{display:block;margin-top:8px;font-size:12px;color:var(--steel);font-style:italic}
+body.clean .rv,body.clean .rv-note{display:none}
+.todo{border:1px dashed var(--terracotta);background:rgba(196,118,58,.06);padding:16px 18px;color:var(--ink-2);font-size:14px}
+.todo .tag{display:block;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--terra-ink);margin-bottom:4px}
+.todo-inline{border-bottom:1px dashed var(--terracotta);background:rgba(196,118,58,.08);padding:0 4px;color:var(--terra-ink);font-size:.92em}
+
+/* sticky nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(249,248,246,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+.nav .wrap{display:flex;align-items:center;gap:20px;min-height:60px}
+.nav .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
+.nav .brand img{height:30px;width:auto;display:block}
+.nav .brand .x{font-family:var(--serif);font-size:18px;color:var(--ink-3)}
+.nav .brand .dsb{height:16px}
+.nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto;min-width:0}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{white-space:nowrap;text-decoration:none;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--ink-3);padding:8px 10px;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.on{color:var(--ink);border-bottom-color:var(--terracotta)}
+.nav-links a span{font-size:11px;color:var(--terra-ink);margin-right:6px;font-variant-numeric:tabular-nums}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--terracotta);width:0}
+@media (max-width:760px){.nav .brand .dsb,.nav .brand .x{display:none}.nav .wrap{gap:8px}}
+
+/* hero */
+.hero{position:relative;color:var(--on-night);background:var(--night) url("assets/hero-graduates.jpg") 62% 30%/cover no-repeat;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,20,17,.88) 0%,rgba(26,20,17,.62) 45%,rgba(26,20,17,.2) 100%),linear-gradient(180deg,rgba(26,20,17,.35) 0%,rgba(26,20,17,0) 30%,rgba(26,20,17,.85) 100%)}
+.hero .wrap{padding-block:clamp(28px,4vw,44px) clamp(40px,6vw,72px);display:grid;gap:clamp(48px,9vw,120px)}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.hero-logos{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero-logos img{display:block;width:auto}
+.hero-logos .db{height:54px}
+.hero-logos .dsb{height:28px}
+.hero-logos .x{font-family:var(--serif);font-size:26px;color:var(--on-night-2)}
+.prep{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.prep span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-night-2);font-weight:500}
+.prep img{height:56px;width:auto;display:block}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5.6rem);line-height:1.02;max-width:13ch}
+.hero .lede{margin-top:20px;font-size:clamp(1rem,1.5vw,1.2rem);font-weight:300;max-width:56ch;color:var(--on-night)}
+.hero .eyebrow{color:var(--on-night);margin-bottom:18px;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.hero .rv{color:var(--on-night);border-color:rgba(245,240,235,.7)}
+.hero-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(245,240,235,.25);margin-top:clamp(32px,5vw,56px)}
+.hero-meta div{padding:16px 16px 0 0}
+.hero-meta div+div{padding-left:16px;border-left:1px solid rgba(245,240,235,.18)}
+.hero-meta .k{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-night-2);font-weight:500}
+.hero-meta .v{font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.2;margin-top:4px}
+.hero-meta .v small{display:block;font-family:var(--sans);font-size:12px;color:var(--on-night-2);margin-top:2px}
+@media (max-width:760px){.hero-meta{grid-template-columns:1fr 1fr}.hero-meta div:nth-child(3){padding-left:0;border-left:0}.prep{align-items:flex-start}}
+
+/* sections */
+section.sec{padding-block:clamp(64px,9vw,120px);border-top:1px solid var(--hair)}
+.sec-head{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:16px 40px;margin-bottom:clamp(32px,5vw,56px);align-items:baseline}
+.sec-head .numeral{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--terra-ink);font-variant-numeric:tabular-nums}
+.sec-head .numeral small{display:block;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+.sec-head h2{font-size:clamp(2.2rem,4.6vw,3.8rem);line-height:1.04}
+.sec-head p{margin-top:16px;color:var(--ink-2);max-width:62ch;font-size:17px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+.indent{margin-left:calc(180px + 40px)}
+@media (max-width:760px){.indent{margin-left:0}}
+
+/* engagement on a page */
+.arc{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:0;border:1px solid var(--line);background:var(--card)}
+.arc>div{padding:clamp(20px,3vw,32px)}
+.arc .arrow{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:32px;color:var(--terracotta);border-inline:1px solid var(--hair);padding-inline:20px}
+.arc p{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.25;margin-top:10px}
+@media (max-width:760px){.arc{grid-template-columns:1fr}.arc .arrow{border-inline:0;border-block:1px solid var(--hair);padding-block:6px;transform:rotate(90deg)}}
+.journey{margin-top:clamp(40px,6vw,64px)}
+.journey-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.jstep{text-align:left;background:none;border:0;border-right:1px solid var(--hair);padding:20px 18px 24px 0;cursor:pointer;display:flex;flex-direction:column;gap:10px;position:relative}
+.jstep+.jstep{padding-left:18px}
+.jstep:last-child{border-right:0}
+.jstep:hover{background:rgba(196,118,58,.05)}
+.jstep .n{font-size:11px;letter-spacing:.12em;color:var(--terra-ink);font-weight:500}
+.jstep .t{font-family:var(--serif);font-size:30px;line-height:1}
+.jstep .s{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2)}
+.jstep .g{font-size:14px;color:var(--ink-2);line-height:1.5}
+.jstep .g b{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:4px}
+.jstep .go{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-ink);font-weight:500;margin-top:auto}
+@media (max-width:860px){.journey-grid{grid-template-columns:1fr 1fr}.jstep:nth-child(2){border-right:0}.jstep:nth-child(3){padding-left:0}.jstep:nth-child(n+3){border-top:1px solid var(--hair)}}
+@media (max-width:480px){.journey-grid{grid-template-columns:1fr}.jstep{border-right:0;padding-left:0!important;border-top:1px solid var(--hair)}}
+.changes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,40px);margin-top:clamp(40px,6vw,64px)}
+.changes h3{font-size:26px;line-height:1.1;margin:8px 0 10px}
+.changes p{color:var(--ink-2);font-size:15px}
+.changes>div{border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:760px){.changes{grid-template-columns:1fr}}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--sand);margin-top:clamp(40px,6vw,64px)}
+.facts>div{padding:24px}
+.facts>div+div{border-left:1px solid var(--hair)}
+.facts .v{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.15;margin-top:6px}
+.facts .v small{display:block;font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-top:4px;line-height:1.4}
+@media (max-width:760px){.facts{grid-template-columns:1fr}.facts>div+div{border-left:0;border-top:1px solid var(--hair)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-size:13px;border:1px solid var(--line);padding:6px 12px;background:var(--card)}
+.chip.opt{border-style:dashed;border-color:var(--terracotta);color:var(--terra-ink)}
+.who{margin-top:32px;font-size:15px;color:var(--ink-2)}
+
+/* overview */
+.ov-body{display:grid;gap:56px}
+.ov-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:clamp(28px,5vw,72px);align-items:start}
+.ov-row.full{grid-template-columns:1fr}
+.ov-row.full p{max-width:none}
+@media (max-width:900px){.ov-row{grid-template-columns:1fr}}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.duo figure{margin:0}
+.duo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;display:block;max-width:100%}
+.duo figcaption{margin-top:8px;font-size:13px;line-height:1.35;color:var(--ink-2)}
+.duo figcaption b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;color:var(--ink)}
+.ov-body h3{font-size:30px;line-height:1.1;margin-bottom:14px}
+.ov-body p+p{margin-top:14px}
+.ov-body p{font-size:17px;color:#2D2A28;max-width:66ch}
+.stat{background:var(--night);color:var(--on-night);padding:28px}
+.stat .big{font-family:var(--serif);font-size:96px;line-height:.9;color:var(--clay)}
+.stat p{font-size:15px;color:var(--on-night-2);margin-top:12px}
+.stat p strong{color:var(--on-night);font-weight:500}
+.stat a{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay)}
+.qs{display:grid;gap:0;border-top:1px solid var(--line)}
+.qs li{list-style:none;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--hair)}
+.qs li::before{content:"?";font-family:var(--serif);font-style:italic;font-size:26px;color:var(--terracotta);line-height:1}
+.qs{padding:0;margin:0}
+.qs li p{font-family:var(--serif);font-size:21px;line-height:1.3;color:var(--ink)}
+.qs li p span{display:block;font-family:var(--sans);font-size:14px;color:var(--ink-2);margin-top:6px;line-height:1.5}
+
+/* approach */
+.process{background:var(--sand);padding:clamp(20px,3vw,40px) clamp(16px,2.5vw,24px) 20px}
+.process svg{display:block;width:100%;height:auto;max-height:260px}
+.ptabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:.5px solid var(--line);margin-top:20px}
+.ptab{background:none;border:0;text-align:left;cursor:pointer;padding:22px 14px 20px 0;opacity:.38;transition:opacity .6s ease,background-color .2s ease}
+.ptab+.ptab{border-left:.5px solid var(--line);padding-left:14px}
+.ptab:hover{background:rgba(196,118,58,.05)}
+.ptab[aria-selected="true"]{opacity:1}
+.ptab .n{font-size:11px;letter-spacing:.1em;color:var(--terra-ink);font-weight:500;text-transform:uppercase}
+.ptab .t{font-family:var(--serif);font-size:24px;line-height:1.2;margin-top:4px}
+.ptab .d{font-size:13px;line-height:1.5;color:var(--ink-2);margin-top:6px}
+.ptab .w{font-size:12px;color:var(--ink-3);margin-top:8px;font-variant-numeric:tabular-nums}
+.pager{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.pager button{height:6px;width:6px;border-radius:3px;background:var(--line);border:0;padding:0;cursor:pointer;transition:all .3s ease}
+.pager button.on{width:24px;background:var(--terracotta)}
+@media (max-width:760px){.ptabs{grid-template-columns:1fr 1fr}.ptab:nth-child(3){border-left:0;padding-left:0}.ptab:nth-child(n+3){border-top:.5px solid var(--line)}.ptab .d{display:none}}
+.panel{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:clamp(32px,4vw,48px)}
+.panel.is-off{display:none}
+.panel h3{font-size:clamp(2rem,3.4vw,2.8rem);line-height:1.05}
+.panel .rfp{font-size:13px;color:var(--ink-3);margin-top:10px}
+.panel .rfp b{font-weight:500;color:var(--ink-2)}
+.panel ul{margin:22px 0 0;padding:0;display:grid;gap:0}
+.panel li{list-style:none;padding:12px 0 12px 24px;border-top:1px solid var(--hair);position:relative;font-size:15.5px;color:#2D2A28}
+.panel li::before{content:"";position:absolute;left:2px;top:22px;width:10px;height:1px;background:var(--terracotta)}
+.gets{background:var(--night);color:var(--on-night);padding:28px;align-self:start}
+.gets .eyebrow{color:var(--clay)}
+.gets p.big{font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,1.8rem);line-height:1.2;margin-top:12px}
+.gets .when{margin-top:20px;padding-top:16px;border-top:1px solid rgba(245,240,235,.18);font-size:14px;color:var(--on-night-2)}
+.labband{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,36px);padding:clamp(20px,3vw,28px);background:rgba(196,118,58,.08);border:1px solid var(--terracotta);animation:labIn .6s ease both}
+.labband h4{font-size:24px;line-height:1.1;margin-top:6px}
+.labband .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--terra-ink);font-weight:600;margin-bottom:6px}
+.labband p{font-size:15px;color:#2D2A28}
+@keyframes labIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:860px){.labband{grid-template-columns:1fr}}
+.jstep .labchip,.ptab .labchip{display:inline-block;align-self:flex-start;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--terra-ink);border:1px dashed var(--terracotta);padding:3px 7px;margin-top:8px;background:rgba(196,118,58,.07)}
+@media (max-width:860px){.panel{grid-template-columns:1fr}}
+
+.lab{margin-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);border:1px solid var(--terracotta)}
+.lab .body{padding:clamp(22px,3vw,36px)}
+.lab h3{font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.05;margin:10px 0 14px}
+.lab p{color:#2D2A28;max-width:62ch}
+.lab p+p{margin-top:12px}
+.lab .side{background:rgba(196,118,58,.07);padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:14px;justify-content:center;border-left:1px solid var(--terracotta)}
+.lab .price{font-family:var(--serif);font-size:44px;line-height:1}
+.lab .price small{display:block;font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-top:6px}
+@media (max-width:860px){.lab{grid-template-columns:1fr}.lab .side{border-left:0;border-top:1px solid var(--terracotta)}}
+.switch{display:inline-flex;align-items:center;gap:12px;cursor:pointer;font-size:14px;font-weight:500;user-select:none}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .track{width:46px;height:26px;border:1px solid var(--ink);position:relative;flex-shrink:0;background:var(--card);transition:background .2s}
+.switch .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;background:var(--ink);transition:transform .2s}
+.switch input:checked+.track{background:var(--terracotta);border-color:var(--terracotta)}
+.switch input:checked+.track::after{transform:translateX(20px);background:#fff}
+.switch input:focus-visible+.track{outline:2px solid var(--steel);outline-offset:3px}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,40px);margin-top:clamp(48px,6vw,72px)}
+.cols3>div{border-top:1px solid var(--line);padding-top:16px}
+.cols3 h4{font-size:22px;line-height:1.15;margin:6px 0 8px}
+.cols3 p{font-size:15px;color:var(--ink-2)}
+@media (max-width:760px){.cols3{grid-template-columns:1fr}}
+
+/* fees */
+.deliv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,4vw,56px);margin-bottom:clamp(48px,6vw,72px)}
+.deliv>div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:16px 0;border-top:1px solid var(--hair)}
+.deliv .i{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--terra-ink);line-height:2;font-variant-numeric:tabular-nums}
+.deliv>div.lab-d{background:rgba(196,118,58,.07);border-top:1px dashed var(--terracotta);padding-inline:12px;animation:labIn .6s ease both}
+.deliv h4{font-size:21px;line-height:1.2}
+.deliv h4 span{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:600;margin-left:8px;vertical-align:middle}
+.deliv p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+@media (max-width:760px){.deliv{grid-template-columns:1fr}}
+.fee-wrap{overflow-x:auto}
+table.fees{width:100%;border-collapse:collapse;min-width:560px;font-size:15px}
+.fees th{text-align:left;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+.fees th:last-child,.fees td:last-child{text-align:right;padding-right:0;white-space:nowrap}
+.fees td{padding:14px 12px 14px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+.fees td:first-child{font-weight:500;width:32%}
+.fees td:first-child small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);font-weight:600;margin-top:4px}
+.fees td:nth-child(2){color:var(--ink-2)}
+.fees td:last-child{font-variant-numeric:tabular-nums;font-family:var(--serif);font-size:20px}
+.fees tr.group td{text-align:left;font-family:var(--sans);background:var(--sand);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);font-weight:500;padding:10px 12px}
+.fees tr.sub td{border-bottom:1px solid var(--line)}
+.fees tr.sub td:first-child{font-weight:400;color:var(--ink-2)}
+.fees tr.opt td{color:var(--ink-3)}
+.fees tr.opt td:last-child{color:var(--ink-3)}
+.fees tr.opt.on td{color:var(--ink)}
+.fees tr.opt.on td:first-child{color:var(--ink)}
+.fees tr.total td{border-bottom:0;border-top:1px solid var(--ink);padding-top:18px}
+.fees tr.total td:first-child{font-family:var(--serif);font-size:24px;font-weight:400}
+.fees tr.total td:last-child{font-size:34px;color:var(--terra-ink)}
+.fee-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 20px;background:var(--sand);margin-bottom:20px}
+.pay{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:28px;border:1px solid var(--line)}
+.pay>div{padding:18px}
+.pay>div+div{border-left:1px solid var(--hair)}
+.pay .v{font-family:var(--serif);font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.pay .k{font-size:13px;color:var(--ink-2);margin-top:2px}
+@media (max-width:560px){.pay{grid-template-columns:1fr}.pay>div+div{border-left:0;border-top:1px solid var(--hair)}}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin-top:clamp(40px,5vw,64px)}
+.two h3{font-size:26px;margin-bottom:12px}
+.two ul{padding:0;margin:0}
+.two li{list-style:none;padding:10px 0;border-top:1px solid var(--hair);font-size:15px;color:#2D2A28}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.note{font-size:14px;color:var(--ink-2);margin-top:14px;max-width:72ch}
+
+/* timeline */
+.gantt-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--card)}
+.gantt{min-width:720px;position:relative;padding:12px 20px 20px}
+.g-axis{display:grid;grid-template-columns:150px minmax(0,1fr);height:34px}
+.g-axis .ticks{position:relative;border-bottom:1px solid var(--line)}
+.g-axis .ticks span{position:absolute;bottom:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:500;transform:translateX(2px)}
+.g-row{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;min-height:48px;border-bottom:1px solid var(--hair)}
+.g-row .name{font-family:var(--serif);font-size:19px;line-height:1.1}
+.g-row .name small{display:block;font-family:var(--sans);font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+.g-row .track{position:relative;height:48px}
+.g-row.lab-row{display:none}
+body.lab-on .g-row.lab-row{display:grid}
+.bar{position:absolute;top:13px;height:22px;background:var(--ink);border:0;padding:0;cursor:pointer;display:flex;align-items:center;overflow:hidden}
+.bar span{font-size:11px;color:#fff;padding-left:8px;white-space:nowrap;letter-spacing:.04em}
+.bar.listen{background:var(--steel)}
+.bar.map{background:#4B7581}
+.bar.build{background:var(--terracotta)}
+.bar.equip{background:var(--terra-ink)}
+.bar.kick{background:var(--ink)}
+.bar.labb{background:transparent;border:1px dashed var(--terracotta)}
+.bar.labb span{color:var(--terra-ink)}
+.bar:hover,.bar:focus-visible{filter:brightness(1.12)}
+.pause{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,rgba(90,90,90,.08) 0 6px,transparent 6px 12px);border-inline:1px dashed var(--line);pointer-events:none}
+.pause-label{position:absolute;top:44px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);text-align:center;font-weight:500}
+.mile{position:absolute;top:13px;width:22px;height:22px;transform:translateX(-11px);background:none;border:0;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mile::before{content:"";width:12px;height:12px;background:var(--paper);border:2px solid var(--ink);transform:rotate(45deg)}
+.mile.key::before{background:var(--terracotta);border-color:var(--terracotta)}
+.mile.labm::before{border-style:dashed;border-color:var(--terracotta)}
+.tip{position:absolute;z-index:5;background:var(--night);color:var(--on-night);font-size:13px;line-height:1.45;padding:10px 12px;max-width:260px;pointer-events:none;opacity:0;transition:opacity .15s}
+.tip.show{opacity:1}
+.tip b{display:block;font-family:var(--serif);font-weight:400;font-size:17px}
+.g-legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px;font-size:13px;color:var(--ink-2)}
+.g-legend span{display:inline-flex;align-items:center;gap:8px}
+.g-legend i{display:inline-block;width:10px;height:10px;transform:rotate(45deg);border:2px solid var(--ink)}
+.g-legend i.key{background:var(--terracotta);border-color:var(--terracotta)}
+.g-list{margin-top:28px;display:grid;gap:0}
+.g-list div{display:grid;grid-template-columns:minmax(0,170px) minmax(0,120px) minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--hair);font-size:15px}
+.g-list div b{font-weight:500}
+.g-list div span:first-child{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.g-list div span:last-child{color:#2D2A28}
+@media (max-width:640px){.g-list div{grid-template-columns:1fr;gap:2px}}
+
+/* team */
+.team{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border-top:1px solid var(--ink)}
+.firm.right{border-left:1px solid var(--hair)}
+.firm{padding:28px 0 0;display:flex;flex-direction:column;gap:24px;min-width:0}
+.firm.left{padding-right:clamp(16px,2.5vw,32px)}
+.firm.right{padding-left:clamp(16px,2.5vw,32px)}
+.firm-logo{height:56px;display:flex;align-items:center}
+.firm-logo img{max-height:56px;width:auto;max-width:100%}
+.firm-logo.dsb img{max-height:34px}
+.firm .about{font-size:15px;color:var(--ink-2)}
+.person{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:start;padding-top:20px;border-top:1px solid var(--hair)}
+.person .ph{width:120px;aspect-ratio:4/5;max-width:100%;background:var(--sand);overflow:hidden}
+.person .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.person .ph.blank{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:var(--serif);font-size:40px;color:var(--terracotta);border:1px dashed var(--terracotta);background:rgba(196,118,58,.06)}
+.person .ph.blank small{font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra-ink);font-weight:600;text-align:center;padding:0 6px}
+.person h4{font-size:26px;line-height:1.05}
+.person .role{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-top:6px}
+.person .bio{font-size:14.5px;color:#2D2A28;margin-top:12px}
+.person .bio p+p{margin-top:10px}
+.person .more{background:none;border:0;padding:0;margin-top:10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--terra-ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.person .full.is-off{display:none}
+@media (max-width:760px){.team{grid-template-columns:1fr}.firm.left,.firm.right{padding-inline:0}.firm.right{border-left:0;border-top:1px solid var(--ink);margin-top:28px}.person{grid-template-columns:96px minmax(0,1fr)}.person .ph{width:96px}}
+
+/* work */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{background:var(--card);border:1px solid var(--line);padding:8px 14px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;cursor:pointer;min-height:40px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.5vw,28px)}
+.case{background:var(--card);border:1px solid var(--line);padding:clamp(20px,2.5vw,28px);display:flex;flex-direction:column;gap:12px;min-width:0}
+.case.is-off{display:none}
+.case .by{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.case .by .firmtag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:3px 8px;border:1px solid var(--steel);color:var(--steel)}
+.case .by .firmtag.dsb{border-color:var(--dsb);color:#B83A15}
+.case h3{font-size:28px;line-height:1.08}
+.case .logo{height:64px;display:flex;align-items:center}
+.case .logo img{max-height:56px;max-width:200px;width:auto;height:auto;display:block}
+.case .ctx{font-size:13px;font-style:italic;color:var(--ink-3)}
+.case .sum{font-size:15px;color:#2D2A28}
+.case .result{display:flex;gap:20px;flex-wrap:wrap;padding:12px 0;border-block:1px solid var(--hair)}
+.case .result div{min-width:0}
+.case .result .v{font-family:var(--serif);font-size:30px;line-height:1;color:var(--terra-ink)}
+.case .result .k{font-size:12px;color:var(--ink-2);margin-top:4px;max-width:22ch}
+.case .why{background:var(--sand);padding:14px 16px;font-size:14.5px;margin-top:auto}
+.case .why b{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--terra-ink);margin-bottom:4px}
+.case .detail.is-off{display:none}
+.case .detail{font-size:14.5px;color:#2D2A28;display:grid;gap:10px}
+.case .toggle{align-self:flex-start;background:none;border:0;padding:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--terra-ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:760px){.cases{grid-template-columns:1fr}}
+.refs{margin-top:clamp(40px,5vw,56px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,4vw,56px)}
+.refs h3{grid-column:1/-1;font-size:26px;margin-bottom:12px}
+.refs div{padding:14px 0;border-top:1px solid var(--hair)}
+.refs b{font-weight:500;display:block}
+.refs span{font-size:14px;color:var(--ink-2)}
+@media (max-width:760px){.refs{grid-template-columns:1fr}}
+
+/* recommendations */
+.recs{display:grid;gap:0;border-top:1px solid var(--ink)}
+.rec{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:16px clamp(24px,4vw,56px);padding:24px 0;border-bottom:1px solid var(--hair)}
+.rec h3{font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.1}
+.rec p{font-size:16.5px;color:#2D2A28;max-width:62ch}
+.rec.q{background:var(--sand);padding-inline:20px;border-bottom:0}
+@media (max-width:760px){.rec{grid-template-columns:1fr}}
+
+/* closing */
+.closing{position:relative;color:var(--on-night);background:var(--night) url("assets/closing-sunrise.jpg") center 70%/cover no-repeat;isolation:isolate}
+.closing::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(26,20,17,.92) 0%,rgba(42,31,26,.55) 55%,rgba(42,31,26,.75) 100%)}
+.closing .wrap{padding-block:clamp(72px,10vw,140px) clamp(32px,4vw,48px);display:grid;gap:clamp(48px,7vw,96px)}
+.closing .eyebrow{color:var(--clay);margin-bottom:16px}
+.closing h2{font-size:clamp(2.6rem,6vw,5.2rem);line-height:1.02;max-width:14ch}
+.closing .thanks{font-family:var(--serif);font-style:italic;font-size:24px;margin-top:24px;color:var(--on-night-2)}
+.contact{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:28px}
+.contact .addr{font-size:16px;user-select:all;border-bottom:1px solid rgba(245,240,235,.4);padding-bottom:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(245,240,235,.4);background:transparent;color:var(--on-night);padding:12px 20px;font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;cursor:pointer;min-height:44px;text-decoration:none}
+.btn:hover{background:rgba(255,255,255,.1)}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-end;border-top:1px solid rgba(245,240,235,.2);padding-top:24px;font-size:12px;color:var(--on-night-2)}
+.foot .logos{display:flex;gap:18px;align-items:center}
+.foot .logos img{height:40px;width:auto}
+.foot .logos img.dsb{height:20px}
+.foot .tagline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--on-night)}
+
+@media print{
+  .nav,.review-bar,.pager,.filters,.person .more,.case .toggle,.switch,.fee-bar .switch{display:none!important}
+  .panel.is-off,.person .full.is-off,.case .detail.is-off,.case.is-off{display:grid!important}
+  .person .full.is-off{display:block!important}
+  section.sec{padding-block:36px;break-inside:auto}
+  .hero,.closing{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .stat{position:static}
+}
+</style>
+</head>
+<body>
+<div class="review-bar" id="reviewBar">
+  <div class="wrap">
+    <div><b>Review draft</b>Oct 28, 2026. Dashed blocks are open items for Team DSB. Outlined tags mark draft lines.</div>
+    <button type="button" id="cleanBtn" aria-pressed="false">Hide review notes</button>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="hero-logos">
+        <img class="db" src="assets/daybreak-logo-white.png" alt="Daybreak Collaborative">
+        <span class="x" aria-hidden="true">×</span>
+        <img class="dsb" src="assets/teamdsb-logo-white.png" alt="Team DSB">
+      </div>
+      <div class="prep"><span>Prepared for</span><img src="assets/summer-search-logo-white.svg" alt="Summer Search"></div>
+    </div>
+    <div>
+      <p class="eyebrow">Proposal for Summer Search · Messaging &amp; Positioning</p>
+      <h1>Summer Search turns the page on a new chapter.</h1>
+      <p class="lede">Here's how Daybreak Collaborative and Team DSB help Summer Search name who they are and where they're going next as champions of youth development and leadership.</p>
+      <div class="hero-meta">
+        <div><div class="k">Timeframe</div><div class="v num">Nov 16 to Mar 31<small>2026 to 2027</small></div></div>
+        <div><div class="k">Core messaging final</div><div class="v">Early February<small>2027</small></div></div>
+        <div><div class="k">Investment</div><div class="v num">$39,000<small>Core engagement and implementation</small></div></div>
+        <div><div class="k">Submitted</div><div class="v num">November 2, 2026<small>Response to Summer Search RFP</small></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Proposal sections">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <img src="assets/daybreak-logo-color.png" alt="Daybreak Collaborative">
+      <span class="x" aria-hidden="true">×</span>
+      <img class="dsb" src="assets/teamdsb-logo.png" alt="Team DSB">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#engagement">Summary</a>
+      <a href="#overview"><span>01</span>Overview</a>
+      <a href="#approach"><span>02</span>Approach</a>
+      <a href="#fees"><span>03</span>Fees</a>
+      <a href="#timeline"><span>04</span>Timeline</a>
+      <a href="#team"><span>05</span>Team</a>
+      <a href="#work"><span>06</span>Work</a>
+      <a href="#next"><span>07</span>Next</a>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<main>
+<!-- ENGAGEMENT ON A PAGE -->
+<section class="sec" id="engagement" style="border-top:0">
+  <div class="wrap">
+    <div class="arc">
+      <div><div class="label">Where Summer Search is now</div><p>Known as a youth development organization. Leadership sits at the heart of the model but not yet at the center of the story.</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div><div class="label">Where this ends</div><p>A clear definition of leadership, a story that stakeholders can champion and wind at the sails of a new strategic plan powered by aligned messaging.</p></div>
+    </div>
+
+    <div class="journey">
+      <div class="label" style="margin-bottom:14px">The journey · select a phase to see the detail</div>
+      <div class="journey-grid" id="journey"></div>
+    </div>
+
+    <div class="changes">
+      <div><div class="eyebrow">What changes</div><h3>Leadership, defined</h3><p>One definition of leadership that is meaningful, accessible and Summer Search's own.</p></div>
+      <div><div class="eyebrow">What changes</div><h3>An evolution that feels earned</h3><p>A story that connects 35 years of mentoring and outcomes to where the strategic plan is headed.</p></div>
+      <div><div class="eyebrow">What changes</div><h3>Language people use</h3><p>Messaging staff, board, alumni and youth can say in their own voices.</p></div>
+    </div>
+
+    <div class="facts">
+      <div><div class="label">Timeframe</div><div class="v num">Nov 16, 2026 to Mar 31, 2027</div></div>
+      <div><div class="label">Investment</div><div class="v num">$39,000<small>Core $28,000 + implementation $11,000</small><small>Optional Youth Leadership Lab: $2,500</small></div></div>
+      <div><div class="label">Core messaging final</div><div class="v">Early February 2027</div></div>
+    </div>
+
+    <div style="margin-top:32px">
+      <div class="label">Deliverable summary</div>
+      <div class="chips">
+        <span class="chip">Discovery Readout</span><span class="chip">Positioning Strategy and Leadership Definition</span><span class="chip">Messaging Framework</span><span class="chip">Activation Roadmap</span><span class="chip">Priority Communications</span><span class="chip">Staff Rollout and Training</span><span class="chip">Implementation Support</span><span class="chip">Messaging Toolkit</span><span class="chip opt">Optional: Youth Leadership Lab</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="sec" id="overview">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="numeral">01<small>Overview</small></div>
+      <div><h2>At the core, we're youth advocates and storytellers.</h2></div>
+    </div>
+    <div class="ov-body">
+      <div class="ov-row">
+        <div>
+          <h3>Why this project</h3>
+          <p>Walker Post and Dillon St. Bernard have championed young people for their entire careers. Walker got his start as a journalist and digital marketer for nonprofits. He later founded Covalent to close the internship gap for college students, led youth-focused strategy for clients at DoSomething.org, and today coaches young leaders every week through Daybreakers and the Carnegie Young Leaders program. Much of his work at Daybreak revolves around working with clients around youth development and leadership.</p>
+          <p>Dillon co-founded Youth250 and built Team DSB, a Gen Z-led firm that has worked with the largest network and coalitions of young people, placed young people on platforms such as CNN and NBC News, and founded Webby Award-winning projects such as "Young People Address the Nation," the first-of-its-kind project that provided a national platform to young people. Daybreak and Team DSB are how we keep doing that work, and Summer Search's question, what leadership means and who gets to define it, is one we both work on every day.</p>
+        </div>
+        <div class="duo">
+          <figure><img src="assets/walker-post.jpg" alt="Walker Post"><figcaption><b>Walker Post</b>Founder, Daybreak Collaborative</figcaption></figure>
+          <figure><img src="assets/dillon-st-bernard.jpg" alt="Dillon St. Bernard"><figcaption><b>Dillon St. Bernard</b>Chief Creative Officer, Team DSB</figcaption></figure>
+        </div>
+      </div>
+      <div class="ov-row full">
+        <div>
+          <h3>The opportunity</h3>
+          <p>Summer Search has always developed leaders. Its model of mentoring, transformative experiences and long-term support builds a capacity young people already have. The FY27–29 Strategic Plan makes that explicit, and the organization's language now needs to catch up. This work sharpens who Summer Search has been: it names leadership clearly enough that donors, partners, students and alumni recognize it, while keeping the educational, career and economic outcomes stakeholders already trust in view.</p>
+          <p>The risk runs in two directions. "Leadership" is a crowded and often generic word in the youth sector, so the definition has to be specific to Summer Search. And a new label without a clear definition can read as a departure, which the 35-year story should prevent.</p>
+        </div>
+      </div>
+      <div class="ov-row">
+        <div>
+          <h3>Why now</h3>
+          <p>A new strategic plan, new ways to reach more young people, and an effort to share the mentoring approach with adults and organizations beyond Summer Search all depend on one shared answer: what do we mean by leadership? Settling that answer before the plan reaches external audiences lets every new program, partnership and appeal build on the same language.</p>
+          <p>Young people are asking a version of the same question. A 2026 Gallup study with the Walton Family Foundation and Harvard's Making Caring Common project found that 45% of Gen Z report lacking meaning, purpose or both, and that young people who believe they make a positive impact on others are three to four times more likely to feel a sense of meaning and purpose. Leadership, as Summer Search develops it, gives young people that sense of impact.</p>
+        </div>
+        <aside class="stat" aria-label="Research finding">
+          <div class="label" style="color:var(--on-night-2)">Gallup, 2026</div>
+          <div class="big num">45%</div>
+          <p><strong>of Gen Z report lacking meaning, purpose or both.</strong> Young people who believe they make a positive impact on others are three to four times more likely to feel a sense of meaning and purpose.</p>
+          <p>Gallup with the Walton Family Foundation and Harvard's Making Caring Common project.</p>
+          <a href="https://news.gallup.com/poll/711836/gen-zers-missing-sense-meaning-purpose-life.aspx" target="_blank" rel="noopener">Read the study ↗</a>
+        </aside>
+      </div>
+      <div class="ov-row full">
+        <div>
+          <h3>What success looks like</h3>
+          <p>By the end of March 2027, Summer Search will have a positioning and a definition of leadership its leaders agree on, a messaging framework stakeholders use in their own words, and its highest-priority communications already speaking the new language. Donors and partners will hear one consistent story about why leadership, why Summer Search and why now, tied to outcomes they already value. In addition, a select group of young Summer Search ambassadors will have shaped the work.</p>
+        </div>
+      </div>
+      <div class="ov-row full">
+        <div>
+          <h3>Questions we'll bring</h3>
+          <ul class="qs">
+            <li><p>Is "youth leadership organization" the strongest frame, and for which audiences?<span>Some young people do not yet see themselves as leaders, and some funders fund outcomes before they fund leadership.</span></p></li>
+            <li><p>What does Summer Search mean by leadership that a peer organization could not also claim?</p></li>
+            <li><p>How directly should leadership connect to the college, career and economic outcomes donors already associate with Summer Search?</p></li>
+            <li><p>Who defines leadership: the organization, or the young people it serves?</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="sec" id="approach">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="numeral">02<small>Our approach</small></div>
+      <div><h2>Listen. Map. Build. Equip.</h2><p>All Daybreak engagements move through four phases. Here is how they map to the four phases in your RFP.</p></div>
+    </div>
+
+    <div class="process">
+      <svg id="bridge" viewBox="0 0 680 240" role="img" aria-label="Diagram of the four phases: two rows of points that connect as the work moves from Listen to Equip">
+        <g id="bridgeLines"></g>
+        <g id="topDots"></g>
+        <g id="botDots"></g>
+      </svg>
+      <div class="ptabs" role="tablist" aria-label="Phases" id="ptabs"></div>
+      <div class="pager" id="pager"></div>
+    </div>
+
+    <div id="panels"></div>
+
+    <div class="lab" id="lab">
+      <div class="body">
+        <div class="eyebrow">Optional add-on</div>
+        <h3>Youth Leadership Lab</h3>
+        <p>Young people are the experts on what leadership looks like in their own lives, and the Youth Leadership Lab puts that expertise to work. Six to eight Summer Search students and alumni, drawn from all five regions, join two 90-minute participatory design sessions as co-designers of the positioning and the messaging.</p>
+        <p><b style="font-weight:600">Session one, during Map.</b> Participants build their own definition of leadership from their experience in the program, then test "youth leadership organization" and the positioning options against it.</p>
+        <p><b style="font-weight:600">Session two, during Build.</b> Participants work the draft messaging the way they would use it with peers, families and funders, rewrite the lines that miss, and bring the stories and proof points that make leadership real.</p>
+        <p>Summer Search gets a leadership definition co-authored by the people it describes, and messaging its students and alumni helped write.</p>
+      </div>
+      <div class="side">
+        <div class="price num">$2,500<small>Including participant stipends</small></div>
+        <label class="switch"><input type="checkbox" id="labToggle" data-lab><span class="track" aria-hidden="true"></span><span>Include the Youth Leadership Lab</span></label>
+        <p style="font-size:13px;color:var(--ink-2)">Switch it on to see where young people shape the work across the phases, deliverables, timeline and fees.</p>
+      </div>
+    </div>
+
+    <div class="cols3">
+      <div><div class="eyebrow">Working with your team</div><h4>Weekly check-ins</h4><p>With Christina Manng and the marketing and development team, led by Walker.</p></div>
+      <div><div class="eyebrow">Working with your team</div><h4>Shared working documents</h4><p>Your team can comment directly in the documents we draft.</p></div>
+      <div><div class="eyebrow">Working with your team</div><h4>A review point each phase</h4><p>At the end of each phase, with a three-business-day feedback window.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="sec" id="fees">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="numeral">03<small>Deliverables + fees</small></div>
+      <div><h2>What you'll receive.</h2></div>
+    </div>
+
+    <div class="deliv" id="deliv"></div>
+
+    <div class="fee-bar">
+      <div><div class="label">Investment</div><div style="font-family:var(--serif);font-size:24px" class="num" data-total-short>$39,000</div></div>
+      <label class="switch"><input type="checkbox" id="labToggle2" data-lab><span class="track" aria-hidden="true"></span><span>Include the Youth Leadership Lab</span></label>
+    </div>
+    <div class="fee-wrap">
+      <table class="fees">
+        <thead><tr><th scope="col">Workstream</th><th scope="col">Description</th><th scope="col">Fee</th></tr></thead>
+        <tbody>
+          <tr class="group"><td colspan="3">Core messaging and positioning · November 2026 to early February 2027</td></tr>
+          <tr><td>Review and Focused Discovery<small>Listen</small></td><td>Materials review, fewer than 10 targeted conversations, landscape review, discovery readout</td><td>$7,000</td></tr>
+          <tr><td>Positioning Strategy<small>Map</small></td><td>Discovery debrief, positioning working session, positioning framework, leadership definition, "youth leadership organization" recommendation</td><td>$10,500</td></tr>
+          <tr><td>Messaging Framework<small>Build</small></td><td>Core narrative, message architecture, audience guidance, descriptions, elevator pitch, terminology guidance, FAQ and hardest questions</td><td>$10,500</td></tr>
+          <tr class="sub"><td>Core engagement subtotal</td><td></td><td>$28,000</td></tr>
+          <tr class="group"><td colspan="3">Implementation support · February to March 2027</td></tr>
+          <tr><td>Activation<small>Equip</small></td><td>Activation roadmap and updated copy for priority communications</td><td>$4,500</td></tr>
+          <tr><td>Rollout and Training<small>Equip</small></td><td>Internal rollout and training for staff and organizational leaders; guidance and guardrails</td><td>$3,000</td></tr>
+          <tr><td>Implementation Support and Toolkit<small>Equip</small></td><td>Review and limited implementation support, thought leadership recommendations, final messaging toolkit</td><td>$3,500</td></tr>
+          <tr class="sub"><td>Implementation support subtotal</td><td></td><td>$11,000</td></tr>
+          <tr class="opt" id="labRow"><td>Youth Leadership Lab<small>Optional add-on</small></td><td>Two participatory design sessions with six to eight Summer Search students and alumni, including participant stipends</td><td>$2,500</td></tr>
+          <tr class="total"><td>Total investment</td><td id="totalNote" style="font-size:14px;color:var(--ink-2)">Without the Youth Leadership Lab</td><td data-total-short>$39,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pay" id="pay"></div>
+    <p class="note">Additional expenses: none anticipated. Youth Leadership Lab stipends are included in its add-on fee.</p>
+
+    <div class="two">
+      <div>
+        <h3>What is out of scope</h3>
+        <ul><li>Visual rebrand or logo work</li><li>Website development</li><li>Rewriting every Summer Search communication</li><li>Ongoing content production and paid media</li></ul>
+        <p class="note">A thought leadership program and a broader content rollout are natural next steps and can be scoped separately.</p>
+      </div>
+      <div>
+        <h3>What we'll need from Summer Search</h3>
+        <ul>
+          <li>A day-to-day lead (we assume Christina Manng) for about two hours a week, including the weekly check-in.</li>
+          <li>Access to existing materials and research before the kickoff week.</li>
+          <li>Help scheduling the targeted conversations by Nov. 18th.</li>
+          <li>Leadership time for a discovery readout in December and a positioning working session in early January (about 90 minutes each).</li>
+          <li>Consolidated feedback within three business days at each review point.</li>
+          <li>Staff time for rollout and training in February.</li>
+          <li class="lab-only" hidden>For the Youth Leadership Lab: help recruiting students and alumni in December, and securing parental consent for participants under 18.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec" id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="numeral">04<small>Timeline</small></div>
+      <div><h2>Suggested timeline for delivery</h2><p>The holiday pause from Dec. 21 to Jan. 1st to give all parties time for rest, relaxation and time with loved ones.</p><p style="margin-top:8px;font-size:14px">Tap or hover a bar or marker for detail.</p></div>
+    </div>
+    <div class="gantt-wrap"><div class="gantt" id="gantt"></div></div>
+    <div class="g-legend">
+      <span><i class="key"></i>Key deliverable</span>
+      <span><i></i>Milestone</span>
+      <span class="lab-only" hidden><i style="border-style:dashed;border-color:var(--terracotta)"></i>Youth Leadership Lab</span>
+    </div>
+    <div class="g-list" id="glist"></div>
+    <p class="note">Project start and close dates depend on contract execution and client availability.</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec" id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="numeral">05<small>Our team</small></div>
+      <div><h2>Two firms. One team.</h2><p>Walker leads the engagement and is Summer Search's day-to-day contact. Dillon and Adam support the work and join select client calls and sessions.</p></div>
+    </div>
+
+    <div class="team">
+      <div class="firm left">
+        <div class="firm-logo"><img src="assets/daybreak-logo-color.png" alt="Daybreak Collaborative"></div>
+        <p class="about">Daybreak Collaborative is a social impact consultancy that works in the space between what's now and what's next. We design strategy, build community, and tell the stories that move organizations from purpose to impact. Walker founded Daybreak in 2026 to double down on next-generation work, building for and alongside young people. Through Daybreakers, our coaching initiative, we stay in close conversation with students and early-career professionals every week, so when we build for young people, we build with them.</p>
+        <div class="person">
+          <div class="ph"><img src="assets/walker-post.jpg" alt="Walker Post"></div>
+          <div>
+            <h4>Walker Post</h4>
+            <div class="role">Founder, Daybreak Collaborative</div>
+            <div class="bio">
+              <p>Walker Post is a social impact strategist who has spent a decade helping people, institutions and ideas find their way back to each other, including as Associate Director of Strategy at DoSomething Strategic, DoSomething.org's social impact consultancy. His clients have included Teach For America, United Way, Hinge, Foot Locker and more.</p>
+              <p style="margin-top:14px">He began his career in journalism. Through Daybreakers, Daybreak's coaching initiative, and as lead coach for the Carnegie Young Leaders program, he works with young people and early-career leaders every week, and he has designed and run youth advisory councils. Before Daybreak, he founded Covalent, a nonprofit education platform that trained 150+ college students in digital marketing and supported 80+ small businesses and nonprofits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="firm right">
+        <div class="firm-logo dsb"><img src="assets/teamdsb-logo.png" alt="Team DSB"></div>
+        <p class="about">Team DSB is a creative and communications agency specializing in using digital storytelling to engage Gen Z and multicultural folks. Since 2021, we've partnered with 100+ purpose-driven organizations, including youth-led and youth-serving groups such as Future Coalition, CoGenerate, C&amp;S, Made By Us, The Jed Foundation, and Youth Collaboratory.</p>
+        <div class="person">
+          <div class="ph"><img src="assets/dillon-st-bernard.jpg" alt="Dillon St. Bernard"></div>
+          <div>
+            <h4>Dillon St. Bernard</h4>
+            <div class="role">Chief Creative Officer, Team DSB</div>
+            <div class="bio">
+              <p>Dillon is a Forbes 30 Under 30 honoree, Co-Founder of Youth250, and Board Member of C&amp;S. The former Comms Director of Future Coalition and Youth Engagement Strategist at The Forum for Youth Investment, he has led messaging and digital strategy for 100+ purpose-driven clients, including Future Coalition, CoGenerate, 92NY, and WCS.</p>
+            </div>
+          </div>
+        </div>
+        <div class="person">
+          <div class="ph"><img src="assets/adam-nevile.jpg" alt="Adam Nevile" style="object-position:42% 20%"></div>
+          <div>
+            <h4>Adam Nevile</h4>
+            <div class="role">Communications Strategist, Team DSB</div>
+            <div class="bio">
+              <p>Adam is a writer, organizer, and Communications Strategist at Team DSB. Grounded in his background as a youth organizer within youth-led spaces, Adam works at the intersection of communications, arts, and community. In his role, he supports communications strategy development and messaging development, with an eye to young people, adult allies, and philanthropic audiences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="numeral">06<small>Relevant work</small></div>
+      <div><h2>Relevant case studies</h2></div>
+    </div>
+    <div class="filters" role="group" aria-label="Filter case studies">
+      <button type="button" data-f="all" aria-pressed="true">All case studies</button>
+      <button type="button" data-f="walker" aria-pressed="false">Led by Walker</button>
+      <button type="button" data-f="dsb" aria-pressed="false">Led by Team DSB</button>
+    </div>
+    <div class="cases" id="cases">
+      <article class="case" data-firm="walker">
+        <div class="by"><div class="logo"><img src="assets/logo-hinge.png" alt="Hinge"></div><span class="firmtag">Led by Walker</span></div>
+        <h3>Hinge: Brand Strategy and Impact Platform</h3>
+        <p class="ctx">Led by Walker at DoSomething Strategic, before founding Daybreak.</p>
+        <p class="sum">Walker led research and strategy for Hinge's first social impact platform, focused on the loneliness epidemic among Gen Z.</p>
+        <div class="result">
+          <div><div class="v num">$1M</div><div class="k">One More Hour Fund at launch</div></div>
+          <div><div class="v num">3</div><div class="k">Anthem Awards</div></div>
+          <div><div class="v num">$3.5M</div><div class="k">Allocated across four countries by end of 2026</div></div>
+        </div>
+        <div class="detail is-off" id="case-hinge">
+          <p>Research showed young people now spend 1,000 fewer hours a year in person than prior generations. The team launched the One More Hour Fund, a $1M initiative funding grassroots efforts that build real-world belonging, with a youth advisory council shaping funding decisions. The work received three Anthem Awards and repositioned Hinge as a brand invested in connection and emotional well-being.</p>
+          <p>One More Hour has since grown from the U.S. into the UK, France and Australia, allocating $3.5M total by the end of 2026.</p>
+        </div>
+        <button class="toggle" type="button" aria-expanded="false" aria-controls="case-hinge">Read the case</button>
+        <div class="why"><b>Why it matters for Summer Search</b>Young people shaped the platform from the start, which kept the positioning credible with the audience it was built for. Summer Search's leadership story needs the same credibility with its students and alumni.</div>
+      </article>
+
+      <article class="case" data-firm="walker">
+        <div class="by"><div class="logo"><img src="assets/logo-comer.png" alt="Comer Education Campus"></div><span class="firmtag">Led by Walker</span></div>
+        <h3>Comer Education Campus: Brand Strategy and Messaging</h3>
+        <p class="ctx">Led by Walker at Prosper Strategies, before founding Daybreak.</p>
+        <p class="sum">Comer Education Campus anchors youth education on Chicago's South Side, including the Gary Comer Youth Center and two Gary Comer schools. With a new executive director and a shift to independent fundraising coming, the Campus needed to resolve years of brand confusion.</p>
+        <div class="result">
+          <div><div class="v num">$6.5M</div><div class="k">Raised following the rebrand</div></div>
+          <div><div class="v num">+13.8%</div><div class="k">Over the prior year</div></div>
+        </div>
+        <div class="detail is-off" id="case-comer">
+          <p>Walker led the work: a five-person planning committee, a 15-person staff committee, a survey that reached hundreds of parents, youth, donors and partners, and interviews across each group.</p>
+          <p>The research surfaced the Campus's strongest differentiator, a place-based approach that stays with young people from middle school through career. That finding shaped a new vision and values, an endorsed brand structure, a tagline ("Empowering Youth, Strengthening Community"), audience-specific key messages and staff brand training.</p>
+        </div>
+        <button class="toggle" type="button" aria-expanded="false" aria-controls="case-comer">Read the case</button>
+        <div class="why"><b>Why it matters for Summer Search</b>Comer had to name what it already was for youth, parents and donors at once, and bring staff along through a real change. Summer Search faces the same task with leadership.</div>
+      </article>
+
+      <article class="case" data-firm="dsb">
+        <div class="by"><div class="logo"><img src="assets/logo-future-coalition.png" alt="Future Coalition"></div><span class="firmtag dsb">Led by Team DSB</span></div>
+        <h3>Future Coalition: Brand Infrastructure and Strategic Positioning</h3>
+        <p class="sum">As the largest network of youth-led organizers in the U.S. grew rapidly, Future Coalition needed to translate complex coalition initiatives into unified, accessible brand messaging.</p>
+        <div class="result">
+          <div><div class="v num">600%+</div><div class="k">Audience growth in one year</div></div>
+        </div>
+        <div class="detail is-off" id="case-fc">
+          <p>Team DSB stepped in to build the communications infrastructure, establish core brand positioning, and streamline multi-channel narrative messaging across youth leadership networks. The strategy unified the coalition's voice and provided scalable frameworks for grassroots activations, driving over 600% audience growth in one year and establishing Future Coalition as a premier, recognized brand in youth civic engagement.</p>
+        </div>
+        <button class="toggle" type="button" aria-expanded="false" aria-controls="case-fc">Read the case</button>
+        <div class="why"><b>Why it matters for Summer Search</b>Summer Search must align multi-regional chapters, diverse student cohorts, and national alumni around a unified positioning without losing authenticity. Team DSB delivers the exact scaffolding needed to streamline complex organizational narratives into a cohesive brand identity.</div>
+      </article>
+
+      <article class="case" data-firm="dsb">
+        <div class="by"><div class="logo"><img src="assets/logo-cogenerate.png" alt="CoGenerate"></div><span class="firmtag dsb">Led by Team DSB</span></div>
+        <h3>CoGenerate: Narrative Strategy and Brand Positioning</h3>
+        <p class="sum">To bridge generational divides and scale a national movement, CoGenerate needed to shift public perception and position intergenerational collaboration as a powerful solution for social change.</p>
+        <div class="result">
+          <div><div class="v">Multimedia report</div><div class="k">On what teens want, and don't want, from adult allies</div></div>
+        </div>
+        <div class="detail is-off" id="case-cog">
+          <p>Team DSB designed and executed a multimedia report on what teens want, and don't want, from adult allies. With funding support from the Bezos Family Foundation and The Eisner Foundation, the report expanded CoGenerate's visibility, drove deep cross-generational engagement, and established the organization as a leading voice in intergenerational innovation.</p>
+        </div>
+        <button class="toggle" type="button" aria-expanded="false" aria-controls="case-cog">Read the case</button>
+        <div class="why"><b>Why it matters for Summer Search</b>Summer Search's model relies on bridging generations, connecting young leaders with mentors, donors, and alumni networks. Team DSB brings proven experience in crafting narrative strategies that resonate across diverse age demographics and build lasting intergenerational connection.</div>
+      </article>
+    </div>
+
+    <div class="refs">
+      <h3>References</h3>
+      <div><b>Josh Penny</b><span>Former Senior Director of Social Impact, Hinge</span></div>
+      <div><b>Audra Watson</b><span>Chief of Youth Civic Programs, Institute for Citizens &amp; Scholars</span></div>
+      <div><b>Corryn G. Freeman</b><span>Executive Director, Future Coalition</span></div>
+      <div><b>Mitali Chakraborty</b><span>CEO, Youth Jobs Connect</span></div>
+    </div>
+    <p class="note">Contact details for references are provided in the PDF submission.</p>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="sec" id="next">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="numeral">07<small>Recommendations</small></div>
+      <div><h2>Early recommendations</h2></div>
+    </div>
+    <div class="recs">
+      <div class="rec"><h3>Define leadership with young people.</h3><p>Summer Search believes young people already have the capacity to lead. Our optional Youth Leadership Lab brings students and alumni in as co-designers of what leadership means and how Summer Search talks about it.</p></div>
+      <div class="rec"><h3>Use the holidays.</h3><p>A discovery readout on Dec 10 gives your team early direction to sit with over the break, so January starts with positioning already in motion.</p></div>
+      <div class="rec"><h3>Roll out inside first.</h3><p>Staff, board and alumni ambassadors should be using the language before external audiences hear it.</p></div>
+      <div class="rec"><h3>Room to breathe.</h3><p>We built in an extra week so positioning and messaging have space: core messaging is final in early February, about one week after the date in your RFP. If late January is firm, we can tighten the Build phase.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="closing">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Daybreak Collaborative × Team DSB</p>
+      <h2>The bridge won't build itself.</h2>
+      <p class="thanks">Thank you.</p>
+      <div class="contact">
+        <span class="addr" id="addr">walker@daybreak-collaborative.com</span>
+        <button class="btn" type="button" id="copyBtn">Copy email</button>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="logos">
+        <img src="assets/daybreak-logo-white.png" alt="Daybreak Collaborative">
+        <img class="dsb" src="assets/teamdsb-logo-white.png" alt="Team DSB">
+      </div>
+      <div>
+        <p class="tagline">In the space between what's now and what's next.</p>
+        <p style="margin-top:6px">Daybreak shapes strategy, designs new initiatives, and builds programs for mission-driven organizations figuring out what's next.</p>
+        <p style="margin-top:6px">Prepared for Summer Search · Messaging &amp; Positioning RFP · Confidential</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="status"></div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fmt = function(n){ return "$" + n.toLocaleString("en-US"); };
+  var state = { lab:false, phase:0 };
+
+  /* ---------- phases ---------- */
+  var PHASES = [
+    { key:"listen", label:"Listen", short:"Build on what Summer Search already knows.",
+      diag:"We start with the people closest to the work and identify the right signals.",
+      when:"Nov 16 to Dec 18", rfp:"Review and focused discovery",
+      lead:"We start from what Summer Search has already learned and add input only where it changes the answer.",
+      items:[
+        "Review of the FY27–29 Strategic Plan, current messaging, website, case for support, impact communications, program materials, and the stakeholder input gathered during planning.",
+        "Fewer than 10 targeted conversations, used only where existing research cannot answer a question. Where we believe more input is essential: CEO, one or two regional leaders, program staff who lead mentoring, one or two board members, one or two funders; youth; and alumni.",
+        "A light landscape review of peer youth-serving and youth leadership organizations: where Summer Search sits and where it can stand apart.",
+        "A discovery readout on Dec 10 with early themes. The week of Dec 14, a positioning tee-up memo frames the questions and early options the January working session will resolve."
+      ],
+      gets:"A discovery readout and early positioning memo that will inform next steps.",
+      lab:{when:"December", title:"Recruit the co-designers", text:"We recruit six to eight students and alumni across all five regions and brief them as co-designers, so they arrive in January ready to work.", adds:"A youth design team that reflects the full Summer Search network."} },
+    { key:"map", label:"Map", short:"Set the position.",
+      diag:"Signals map to a clear picture of the terrain and what's standing in the way.",
+      when:"January", rfp:"Positioning strategy",
+      lead:"We turn what we heard into a position Summer Search's leaders can stand behind.",
+      items:[
+        "A joint Daybreak and Team DSB debrief of discovery findings.",
+        "A facilitated positioning working session with Summer Search leadership to test direction and resolve open questions.",
+        "A positioning framework: who Summer Search is, what it believes, what it means by youth leadership, the role it plays in developing leadership, what sets its approach apart, why the work matters now, and how its legacy connects to its future.",
+        "A recommendation on whether \"youth leadership organization\" is the strongest language, and how to introduce it externally."
+      ],
+      gets:"A positioning framework and a definition of leadership the organization stands behind.",
+      lab:{when:"January · 90 minutes", title:"Participatory design session one", text:"Students and alumni build their own definition of leadership from their experience in the program, then test \"youth leadership organization\" and the positioning options against it.", adds:"Their definition goes straight into the positioning framework, so the leadership definition is co-authored by the people it describes."} },
+    { key:"build", label:"Build", short:"Make the language usable.",
+      diag:"We co-build with your team in iterative cycles. Drafting, testing, refining together.",
+      when:"January to early February", rfp:"Messaging framework",
+      lead:"We test every draft by ear: if it does not sound natural spoken by a staff member or an alum, we rewrite it.",
+      items:[
+        "Core organizational narrative and positioning statement.",
+        "Message architecture: key messages, proof points and message hierarchy.",
+        "The leadership definition and a \"why now\" narrative, with clear differentiation from other youth leadership organizations.",
+        "Audience-specific guidance for donors and funders, partners, students, alumni and prospective supporters.",
+        "Short, medium and long descriptions; an elevator pitch and talking points.",
+        "Terminology guidance: language to use, language to reconsider, and where it should vary by audience.",
+        "FAQ and transition messaging, including responses to the three to five hardest challenge questions.",
+        "Examples of how the messaging flexes across communications."
+      ],
+      gets:"A messaging framework that sounds natural spoken by staff, board, alumni and supporters.",
+      lab:{when:"Late January · 90 minutes", title:"Participatory design session two", text:"Students and alumni work the draft messaging the way they would use it with peers, families and funders, rewrite the lines that miss, and bring the stories and proof points that make leadership real.", adds:"Messaging that young people helped write, with proof points from their own experience built in."} },
+    { key:"equip", label:"Equip", short:"Put it to work.",
+      diag:"We hand off to build your team's capacity, not their reliance on us.",
+      when:"February to March", rfp:"Activation and implementation",
+      lead:"Every engagement ends with a handoff designed to build your team's capacity.",
+      items:[
+        "A prioritized activation roadmap: what to update, in what order, who owns it and when.",
+        "Updated copy for four priority communications: homepage, About page, case for support, and boilerplate with elevator pitch.",
+        "Internal rollout and training for staff and organizational leaders.",
+        "Messaging guidance and guardrails so staff can adapt the language and stay consistent.",
+        "Review and limited implementation support through March 2027.",
+        "Recommendations for thought leadership and executive visibility.",
+        "A final messaging toolkit staff and leadership keep using after we leave."
+      ],
+      gets:"A team equipped to use the messaging consistently, and a toolkit to keep.",
+      lab:{when:"February", title:"Youth voice in the rollout", text:"What students and alumni said leadership means to them becomes part of staff training, so staff hear the definition in young people's own words.", adds:"A rollout grounded in the voices the messaging is about."} }
+  ];
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];}); }
+
+  // journey band
+  var jg = document.getElementById("journey");
+  jg.innerHTML = PHASES.map(function(p,i){
+    return '<button type="button" class="jstep" data-go="'+i+'">'+
+      '<span class="n">0'+(i+1)+'</span><span class="t">'+p.label+'</span><span class="s">'+esc(p.short)+'</span>'+
+      '<span class="g"><b>What Summer Search gets</b>'+esc(p.gets)+'</span>'+'<span class="go">See the detail →</span></button>';
+  }).join("");
+  jg.addEventListener("click",function(e){
+    var b = e.target.closest("[data-go]"); if(!b) return;
+    setPhase(+b.dataset.go);
+    document.getElementById("approach").scrollIntoView({behavior: reduce ? "auto" : "smooth"});
+  });
+
+  // tabs + panels
+  var tabs = document.getElementById("ptabs"), pager = document.getElementById("pager"), panels = document.getElementById("panels");
+  tabs.innerHTML = PHASES.map(function(p,i){
+    return '<button type="button" class="ptab" role="tab" id="tab-'+p.key+'" aria-controls="panel-'+p.key+'" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'" data-i="'+i+'">'+
+      '<div class="n">0'+(i+1)+'</div><div class="t">'+p.label+'</div><div class="d">'+esc(p.diag)+'</div><div class="w">'+esc(p.when)+'</div>'+(p.lab?'<span class="labchip lab-only" hidden>+ Youth Lab</span>':'')+'</button>';
+  }).join("");
+  pager.innerHTML = PHASES.map(function(p,i){ return '<button type="button" aria-label="Phase '+(i+1)+' of 4: '+p.label+'" data-i="'+i+'"></button>'; }).join("");
+  panels.innerHTML = PHASES.map(function(p,i){
+    return '<div class="panel'+(i?' is-off':'')+'" role="tabpanel" id="panel-'+p.key+'" aria-labelledby="tab-'+p.key+'">'+
+      '<div><div class="eyebrow">Phase 0'+(i+1)+' · '+esc(p.when)+'</div>'+
+      '<h3 style="margin-top:10px">'+p.label+'. '+esc(p.short)+'</h3>'+
+      '<p class="rfp">Your RFP phase: <b>'+esc(p.rfp)+'</b></p>'+
+      '<p style="margin-top:16px;font-size:17px;max-width:60ch">'+esc(p.lead)+'</p>'+
+      '<ul>'+p.items.map(function(t){return '<li>'+esc(t)+'</li>';}).join("")+'</ul></div>'+
+      '<aside class="gets"><div class="eyebrow">What Summer Search gets</div><p class="big">'+esc(p.gets)+'</p>'+
+      '<div class="when">'+esc(p.when)+'</div>'+
+      '</aside>'+
+      (p.lab ? '<div class="labband lab-only" hidden><div><div class="k">Youth Leadership Lab · '+esc(p.lab.when)+'</div><h4>'+esc(p.lab.title)+'</h4></div>'+
+        '<div><div class="k">What happens</div><p>'+esc(p.lab.text)+'</p></div><div><div class="k">What it adds</div><p>'+esc(p.lab.adds)+'</p></div></div>' : '')+
+      '</div>';
+  }).join("");
+  tabs.addEventListener("click",function(e){ var b=e.target.closest("[data-i]"); if(b) setPhase(+b.dataset.i); });
+  pager.addEventListener("click",function(e){ var b=e.target.closest("[data-i]"); if(b) setPhase(+b.dataset.i); });
+  tabs.addEventListener("keydown",function(e){
+    var k=e.key, n=null;
+    if(k==="ArrowRight") n=(state.phase+1)%4; else if(k==="ArrowLeft") n=(state.phase+3)%4; else if(k==="Home") n=0; else if(k==="End") n=3;
+    if(n!==null){ e.preventDefault(); setPhase(n); tabs.children[n].focus(); }
+  });
+  // swipe on the diagram
+  var sx=null, sy=null, proc=document.querySelector(".process");
+  proc.addEventListener("touchstart",function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+  proc.addEventListener("touchend",function(e){
+    if(sx===null) return; var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; sx=null;
+    if(Math.abs(dx)<40||Math.abs(dx)<Math.abs(dy)) return; setPhase(dx<0?(state.phase+1)%4:(state.phase+3)%4);
+  });
+
+  /* ---------- bridge diagram (rebuilt from the Daybreak site) ---------- */
+  var XS=[110,180,250,320,390,460,530,600], R=4, NS="http://www.w3.org/2000/svg";
+  var POSE=[{t:80,b:160,o:1},{t:80,b:160,o:1},{t:80,b:160,o:1},{t:110,b:130,o:.15}];
+  var LINKS=[[],[[1,1],[3,3],[5,5]],[0,1,2,3,4,5,6,7].map(function(i){return[i,i];}),[0,1,2,3,4,5,6,7].map(function(i){return[i,i];})];
+  var STYLE=[null,{s:"#888780",w:.75,o:.7,p:false},{s:"#888780",w:1,o:.7,p:false},{s:"#C4763A",w:.75,o:.9,p:true}];
+  var gTop=document.getElementById("topDots"), gBot=document.getElementById("botDots"), gLines=document.getElementById("bridgeLines");
+  var tops=[], bots=[];
+  XS.forEach(function(x){
+    var a=document.createElementNS(NS,"circle"); a.setAttribute("cx",x); a.setAttribute("cy",80); a.setAttribute("r",R); a.setAttribute("fill","#335C67"); gTop.appendChild(a); tops.push(a);
+    var b=document.createElementNS(NS,"circle"); b.setAttribute("cx",x); b.setAttribute("cy",160); b.setAttribute("r",R); b.setAttribute("fill","#C4763A"); gBot.appendChild(b); bots.push(b);
+  });
+  var cur={t:80,b:160,o:1}, raf=0, timers=[];
+  function paint(){
+    tops.forEach(function(c){c.setAttribute("cy",cur.t);});
+    bots.forEach(function(c){c.setAttribute("cy",cur.b); c.setAttribute("opacity",cur.o);});
+    Array.prototype.forEach.call(gLines.querySelectorAll("line"),function(l){ l.setAttribute("y1",cur.t); l.setAttribute("y2",cur.b); });
+  }
+  function animateTo(i){
+    var tgt=POSE[i]; cancelAnimationFrame(raf);
+    if(reduce){ cur={t:tgt.t,b:tgt.b,o:tgt.o}; paint(); return; }
+    (function step(){
+      cur.t+=(tgt.t-cur.t)*.07; cur.b+=(tgt.b-cur.b)*.07; cur.o+=(tgt.o-cur.o)*.07; paint();
+      if(Math.abs(tgt.t-cur.t)+Math.abs(tgt.b-cur.b)+Math.abs(tgt.o-cur.o)>.05) raf=requestAnimationFrame(step); else { cur={t:tgt.t,b:tgt.b,o:tgt.o}; paint(); }
+    })();
+  }
+  function drawLines(i){
+    timers.forEach(clearTimeout); timers=[]; gLines.innerHTML="";
+    var st=STYLE[i]; if(!st) return;
+    LINKS[i].forEach(function(pair,k){
+      timers.push(setTimeout(function(){
+        var l=document.createElementNS(NS,"line");
+        l.setAttribute("x1",XS[pair[0]]); l.setAttribute("x2",XS[pair[1]]); l.setAttribute("y1",cur.t); l.setAttribute("y2",cur.b);
+        l.setAttribute("stroke",st.s); l.setAttribute("stroke-width",st.w); l.setAttribute("fill","none");
+        if(reduce){ l.setAttribute("opacity",st.o); gLines.appendChild(l); return; }
+        l.setAttribute("opacity",0); l.style.transition="opacity .9s ease"; gLines.appendChild(l);
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ l.setAttribute("opacity",st.o); }); });
+        if(st.p) timers.push(setTimeout(function(){ l.style.transition=""; l.style.animation="pv-pulse 1.8s ease-in-out infinite"; },900));
+      }, reduce?0:250+k*90));
+    });
+  }
+  var ks=document.createElement("style"); ks.textContent="@keyframes pv-pulse{0%,100%{opacity:.9}50%{opacity:.35}}"; document.head.appendChild(ks);
+
+  function setPhase(i){
+    state.phase=i;
+    Array.prototype.forEach.call(tabs.children,function(t,k){ t.setAttribute("aria-selected",k===i); t.tabIndex = k===i?0:-1; });
+    Array.prototype.forEach.call(pager.children,function(t,k){ t.classList.toggle("on",k===i); t.setAttribute("aria-current",k===i?"step":"false"); });
+    Array.prototype.forEach.call(panels.children,function(p,k){ p.classList.toggle("is-off",k!==i); });
+    animateTo(i); drawLines(i);
+  }
+  setPhase(0);
+
+  /* ---------- deliverables ---------- */
+  var DELIV=[
+    ["Discovery Readout","Listen","Synthesis of existing research and conversations, the landscape review, early positioning direction, and a positioning tee-up memo."],
+    ["Positioning Strategy and Leadership Definition","Map","The positioning framework and the recommendation on \"youth leadership organization.\""],
+    ["Messaging Framework","Build","Core narrative, message architecture and key messages, audience-specific guidance, short, medium and long descriptions, elevator pitch and talking points, terminology guidance, and FAQ and transition messaging."],
+    ["Activation Roadmap","Equip","Sequencing, ownership and timing."],
+    ["Priority Communications","Equip","Updated copy for four high-priority communications: homepage, About page, case for support, and boilerplate with elevator pitch."],
+    ["Staff Rollout and Training","Equip","Internal rollout for staff and organizational leaders."],
+    ["Implementation Support","Equip","Review and guidance through March, plus thought leadership recommendations."],
+    ["Messaging Toolkit","Equip","The final, ongoing resource for staff and leadership."],
+    ["Youth Leadership Lab Synthesis","Optional","The leadership definition students and alumni built, their edits to the messaging, and the stories they contributed, documented for staff.",true]
+  ];
+  document.getElementById("deliv").innerHTML = DELIV.map(function(d,i){
+    return '<div'+(d[3]?' class="lab-d lab-only" hidden':'')+'><span class="i">'+(i<9?'0':'')+(i+1)+'</span><div><h4>'+esc(d[0])+'<span>'+d[1]+'</span></h4><p>'+esc(d[2])+'</p></div></div>';
+  }).join("");
+
+  /* ---------- timeline ---------- */
+  var START=Date.UTC(2026,10,16), END=Date.UTC(2027,2,31), SPAN=(END-START)/864e5+1;
+  function d(y,m,dd){ return (Date.UTC(y,m-1,dd)-START)/864e5; }
+  function pct(days){ return (days/SPAN*100).toFixed(3)+"%"; }
+  var ROWS=[
+    {name:"Kickoff", sub:"Week of Nov 16", bars:[{cls:"kick",a:d(2026,11,16),b:d(2026,11,20),t:"Kickoff",nolabel:true,x:"Kickoff meeting, materials handoff, conversation list confirmed."}]},
+    {name:"Listen", sub:"Nov 16 to Dec 18", bars:[{cls:"listen",a:d(2026,11,16),b:d(2026,12,18),t:"Listen",x:"Materials review, targeted conversations, landscape review."}],
+      miles:[{at:d(2026,12,10),key:true,t:"Discovery readout · Dec 10",x:"Early themes from discovery."},
+             {at:d(2026,12,15),key:false,t:"Positioning tee-up memo · week of Dec 14",x:"Frames the questions and early options the January working session will resolve."}]},
+    {name:"Map", sub:"January", bars:[{cls:"map",a:d(2027,1,4),b:d(2027,1,29),t:"Map",x:"Discovery debrief, positioning working session, positioning framework agreed."}]},
+    {name:"Build", sub:"Jan to early Feb", bars:[{cls:"build",a:d(2027,1,18),b:d(2027,2,5),t:"Build",x:"Messaging framework, tested by ear."}],
+      miles:[{at:d(2027,2,5),key:true,t:"Core messaging final · early February",x:"About one week after the RFP date, to give positioning and messaging room."}]},
+    {name:"Equip", sub:"February to March", bars:[{cls:"equip",a:d(2027,2,8),b:d(2027,3,31),t:"Equip",x:"Activation roadmap, priority communications, staff training, implementation support."}],
+      miles:[{at:d(2027,3,31),key:true,t:"Final toolkit · Mar 31",x:"The messaging toolkit staff and leadership keep using."}]},
+    {name:"Youth Lab", sub:"Optional add-on", lab:true, bars:[{cls:"labb",a:d(2026,12,1),b:d(2026,12,18),t:"Recruiting",x:"Recruiting students and alumni across all five regions; parental consent for participants under 18."}],
+      miles:[{at:d(2027,1,13),lab:true,t:"Design session one · January",x:"During positioning: students and alumni build their definition of leadership and test the positioning options. Exact date set with Summer Search."},
+             {at:d(2027,1,27),lab:true,t:"Design session two · late January",x:"During messaging: students and alumni work and rewrite the draft messaging. Exact date set with Summer Search."}]}
+  ];
+  var TICKS=[["Nov 16",0],["Dec",d(2026,12,1)],["Jan",d(2027,1,1)],["Feb",d(2027,2,1)],["Mar",d(2027,3,1)]];
+  var g=document.getElementById("gantt");
+  var h='<div class="g-axis"><div></div><div class="ticks">'+TICKS.map(function(t){return '<span style="left:'+pct(t[1])+'">'+t[0]+'</span>';}).join("")+'</div></div>';
+  ROWS.forEach(function(r,ri){
+    h+='<div class="g-row'+(r.lab?' lab-row':'')+'"><div class="name">'+r.name+'<small>'+r.sub+'</small></div><div class="track">';
+    if(ri===0) h+='';
+    h+='<div class="pause" style="left:'+pct(d(2026,12,21))+';width:'+pct(12)+'"></div>';
+    r.bars.forEach(function(b){
+      h+='<button type="button" class="bar '+b.cls+'" style="left:'+pct(b.a)+';width:'+pct(b.b-b.a+1)+'" data-t="'+esc(b.t)+'" data-x="'+esc(b.x)+'" aria-label="'+esc(b.t+": "+b.x)+'">'+(b.nolabel?'':'<span>'+esc(b.t)+'</span>')+'</button>';
+    });
+    (r.miles||[]).forEach(function(m){
+      h+='<button type="button" class="mile'+(m.key?' key':'')+(m.lab?' labm':'')+'" style="left:'+pct(m.at+.5)+'" data-t="'+esc(m.t)+'" data-x="'+esc(m.x)+'" aria-label="'+esc(m.t+": "+m.x)+'"></button>';
+    });
+    h+='</div></div>';
+  });
+  h+='<div class="g-row" style="border-bottom:0;min-height:30px"><div></div><div class="track" style="height:30px"><div class="pause-label" style="top:6px;left:'+pct(d(2026,12,21))+';width:'+pct(12)+'">Holiday pause</div></div></div>';
+  g.innerHTML=h;
+  var tip=document.getElementById("tip");
+  function showTip(el){
+    tip.innerHTML='<b>'+esc(el.dataset.t)+'</b>'+esc(el.dataset.x);
+    var r=el.getBoundingClientRect();
+    tip.classList.add("show");
+    var w=tip.offsetWidth, x=Math.min(Math.max(8,r.left+r.width/2-w/2+window.scrollX), document.documentElement.clientWidth-w-8+window.scrollX);
+    tip.style.left=x+"px"; tip.style.top=(r.bottom+window.scrollY+8)+"px";
+  }
+  function hideTip(){ tip.classList.remove("show"); }
+  g.addEventListener("mouseover",function(e){ var el=e.target.closest("[data-t]"); if(el) showTip(el); });
+  g.addEventListener("mouseout",function(e){ if(e.target.closest("[data-t]")) hideTip(); });
+  g.addEventListener("focusin",function(e){ var el=e.target.closest("[data-t]"); if(el) showTip(el); });
+  g.addEventListener("focusout",hideTip);
+  g.addEventListener("click",function(e){ var el=e.target.closest("[data-t]"); if(el) showTip(el); });
+  document.querySelector(".gantt-wrap").addEventListener("scroll",hideTip,{passive:true});
+
+  var GL=[
+    ["Week of Nov 16","Kickoff","Kickoff meeting, materials handoff, conversation list confirmed",false],
+    ["Nov 16 to Dec 18","Listen","Materials review, targeted conversations, landscape review; discovery readout Dec 10; positioning tee-up memo the week of Dec 14",false],
+    ["December","Youth Leadership Lab","Recruit and brief six to eight student and alumni co-designers (optional)",true],
+    ["Dec 21 to Jan 1","Holiday pause","Time for rest, relaxation and time with loved ones. No client reviews planned.",false],
+    ["January","Map","Discovery debrief, positioning working session, positioning framework agreed",false],
+    ["January","Youth Leadership Lab","Participatory design session one, during positioning (optional)",true],
+    ["January to early February","Build","Messaging framework; core messaging final",false],
+    ["Late January","Youth Leadership Lab","Participatory design session two, during messaging (optional)",true],
+    ["February to March","Equip","Activation roadmap, priority communications, staff training, implementation support; final toolkit by Mar 31",false]
+  ];
+  document.getElementById("glist").innerHTML=GL.map(function(r){
+    return '<div'+(r[3]?' class="lab-only" hidden':'')+'><span>'+r[0]+'</span><b>'+r[1]+'</b><span>'+esc(r[2])+'</span></div>';
+  }).join("");
+
+  /* ---------- lab toggle ---------- */
+  var toggles=document.querySelectorAll("[data-lab]");
+  function setLab(on){
+    state.lab=on;
+    document.body.classList.toggle("lab-on",on);
+    toggles.forEach(function(t){ t.checked=on; });
+    document.querySelectorAll(".lab-only").forEach(function(el){ el.hidden=!on; });
+    var total = on?41500:39000;
+    document.querySelectorAll("[data-total-short]").forEach(function(el){ el.textContent=fmt(total); });
+    document.getElementById("labRow").classList.toggle("on",on);
+    document.getElementById("totalNote").textContent = on?"Including the Youth Leadership Lab":"Without the Youth Leadership Lab";
+    var p=[.4,.3,.3].map(function(f){return Math.round(total*f);});
+    document.getElementById("pay").innerHTML =
+      '<div><div class="v">'+fmt(p[0])+'</div><div class="k">40% at signing</div></div>'+
+      '<div><div class="v">'+fmt(p[1])+'</div><div class="k">30% at the midpoint</div></div>'+
+      '<div><div class="v">'+fmt(p[2])+'</div><div class="k">30% upon completion</div></div>';
+    try{ localStorage.setItem("ss-lab", on?"1":"0"); }catch(e){}
+  }
+  toggles.forEach(function(t){ t.addEventListener("change",function(){ setLab(t.checked); }); });
+  var saved=null; try{ saved=localStorage.getItem("ss-lab"); }catch(e){}
+  setLab(saved==="1");
+
+  /* ---------- bios + cases ---------- */
+  document.addEventListener("click",function(e){
+    var b=e.target.closest(".more,.toggle"); if(!b) return;
+    var el=document.getElementById(b.getAttribute("aria-controls")); var open=b.getAttribute("aria-expanded")!=="true";
+    el.classList.toggle("is-off",!open); b.setAttribute("aria-expanded",open);
+    b.textContent = b.classList.contains("more") ? (open?"Show less":"Read full bio") : (open?"Show less":"Read the case");
+  });
+  var fbtns=document.querySelectorAll(".filters button");
+  fbtns.forEach(function(btn){ btn.addEventListener("click",function(){
+    var f=btn.dataset.f; fbtns.forEach(function(x){x.setAttribute("aria-pressed",x===btn);});
+    document.querySelectorAll(".case").forEach(function(c){ c.classList.toggle("is-off", f!=="all" && c.dataset.firm!==f); });
+  }); });
+
+  /* ---------- review layer ---------- */
+  var cleanBtn=document.getElementById("cleanBtn");
+  function setClean(on){ document.body.classList.toggle("clean",on); cleanBtn.setAttribute("aria-pressed",on); cleanBtn.textContent=on?"Show review notes":"Hide review notes"; try{localStorage.setItem("ss-clean",on?"1":"0");}catch(e){} }
+  cleanBtn.addEventListener("click",function(){ setClean(!document.body.classList.contains("clean")); });
+  var sc=null; try{ sc=localStorage.getItem("ss-clean"); }catch(e){} setClean(sc==="1");
+
+  /* ---------- copy ---------- */
+  document.getElementById("copyBtn").addEventListener("click",function(){
+    var btn=this, txt=document.getElementById("addr").textContent;
+    function done(ok){ btn.textContent = ok?"Copied":"Select and copy"; setTimeout(function(){btn.textContent="Copy email";},2000); }
+    try{ navigator.clipboard.writeText(txt).then(function(){done(true);},function(){ selectAddr(); done(false); }); }catch(e){ selectAddr(); done(false); }
+    function selectAddr(){ var r=document.createRange(); r.selectNodeContents(document.getElementById("addr")); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+
+  /* ---------- nav: scrollspy + progress ---------- */
+  var links=Array.prototype.slice.call(document.querySelectorAll("#navLinks a")), prog=document.getElementById("progress");
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
+  function onScroll(){
+    var y=window.scrollY, H=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width = (H>0? Math.min(100,y/H*100):0)+"%";
+    var cur=-1; secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top < 120) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle("on",i===cur); });
+    if(cur>=0){ var a=links[cur], box=a.parentNode; if(a.offsetLeft < box.scrollLeft || a.offsetLeft+a.offsetWidth > box.scrollLeft+box.clientWidth) box.scrollLeft=a.offsetLeft-16; }
+  }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+})();
+</script>
+
+</body>
+</html>
