@@ -415,13 +415,6 @@ body.lab-on .g-row.lab-row{display:grid}
 </style>
 </head>
 <body>
-<div class="review-bar" id="reviewBar">
-  <div class="wrap">
-    <div><b>Review draft</b>Oct 28, 2026. Dashed blocks are open items for Team DSB. Outlined tags mark draft lines.</div>
-    <button type="button" id="cleanBtn" aria-pressed="false">Hide review notes</button>
-  </div>
-</div>
-
 <header class="hero" id="top">
   <div class="wrap">
     <div class="hero-top">
@@ -1154,11 +1147,7 @@ body.lab-on .g-row.lab-row{display:grid}
     document.querySelectorAll(".case").forEach(function(c){ c.classList.toggle("is-off", f!=="all" && c.dataset.firm!==f); });
   }); });
 
-  /* ---------- review layer ---------- */
-  var cleanBtn=document.getElementById("cleanBtn");
-  function setClean(on){ document.body.classList.toggle("clean",on); cleanBtn.setAttribute("aria-pressed",on); cleanBtn.textContent=on?"Show review notes":"Hide review notes"; try{localStorage.setItem("ss-clean",on?"1":"0");}catch(e){} }
-  cleanBtn.addEventListener("click",function(){ setClean(!document.body.classList.contains("clean")); });
-  var sc=null; try{ sc=localStorage.getItem("ss-clean"); }catch(e){} setClean(sc==="1");
+  document.body.classList.add("clean");
 
   /* ---------- copy ---------- */
   document.getElementById("copyBtn").addEventListener("click",function(){
