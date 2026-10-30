@@ -84,7 +84,8 @@ body.clean .rv,body.clean .rv-note{display:none}
 @media (max-width:760px){.nav .brand .dsb,.nav .brand .x{display:none}.nav .wrap{gap:8px}}
 
 /* hero */
-.hero{position:relative;color:var(--on-night);background:var(--night) url("assets/hero-graduates.jpg") 62% 30%/cover no-repeat;isolation:isolate}
+.hero{position:relative;color:var(--on-night);background:var(--night);isolation:isolate;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:url("assets/hero-graduates.jpg") 62% 30%/cover no-repeat;animation:heroSettle 2.8s cubic-bezier(.2,.6,.2,1) both}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,20,17,.88) 0%,rgba(26,20,17,.62) 45%,rgba(26,20,17,.2) 100%),linear-gradient(180deg,rgba(26,20,17,.35) 0%,rgba(26,20,17,0) 30%,rgba(26,20,17,.85) 100%)}
 .hero .wrap{padding-block:clamp(28px,4vw,44px) clamp(40px,6vw,72px);display:grid;gap:clamp(48px,9vw,120px)}
 .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
@@ -404,6 +405,25 @@ body.lab-on .g-row.lab-row{display:grid}
 .foot .logos img.dsb{height:20px}
 .foot .tagline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--on-night)}
 
+/* ---------- motion: hero entrance, reveals, timeline draw, hovers ---------- */
+@keyframes heroSettle{from{transform:scale(1.06)}to{transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.hero-top{animation:fadeUp .8s ease both .1s}
+.hero .eyebrow{animation:fadeUp .8s ease both .3s}
+.hero h1{animation:fadeUp .9s ease both .45s}
+.hero .lede{animation:fadeUp .9s ease both .65s}
+.hero-meta{animation:fadeUp .9s ease both .85s}
+.anim .rvl{opacity:0;transform:translateY(14px)}
+.anim .rvl.in{opacity:1;transform:none;transition:opacity .7s ease var(--rd,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--rd,0ms)}
+.gantt.armed .bar{transform:scaleX(0);transform-origin:left center}
+.gantt.armed .mile{opacity:0;transform:translateX(-11px) scale(.3)}
+.gantt.drawn .bar{transform:scaleX(1);transition:transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.gantt.drawn .mile{opacity:1;transform:translateX(-11px) scale(1);transition:opacity .4s ease var(--d,0ms),transform .5s cubic-bezier(.3,1.4,.5,1) var(--d,0ms)}
+.case{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.case:hover{transform:translateY(-3px);border-color:var(--ink-3);box-shadow:0 10px 24px -18px rgba(42,31,26,.45)}
+.jstep .arr{display:inline-block;transition:transform .25s ease}
+.jstep:hover .arr,.jstep:focus-visible .arr{transform:translateX(5px)}
+
 @media print{
   .nav,.review-bar,.pager,.filters,.person .more,.case .toggle,.switch,.fee-bar .switch{display:none!important}
   .panel.is-off,.person .full.is-off,.case .detail.is-off,.case.is-off{display:grid!important}
@@ -411,6 +431,9 @@ body.lab-on .g-row.lab-row{display:grid}
   section.sec{padding-block:36px;break-inside:auto}
   .hero,.closing{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .stat{position:static}
+  .rvl{opacity:1!important;transform:none!important}
+  .gantt .bar{transform:none!important}.gantt .mile{opacity:1!important}
+  .hero::after,.hero *{animation:none!important}
 }
 </style>
 </head>
@@ -935,7 +958,7 @@ body.lab-on .g-row.lab-row{display:grid}
   jg.innerHTML = PHASES.map(function(p,i){
     return '<button type="button" class="jstep" data-go="'+i+'">'+
       '<span class="n">0'+(i+1)+'</span><span class="t">'+p.label+'</span><span class="s">'+esc(p.short)+'</span>'+
-      '<span class="g"><b>What Summer Search gets</b>'+esc(p.gets)+'</span>'+'<span class="go">See the detail →</span></button>';
+      '<span class="g"><b>What Summer Search gets</b>'+esc(p.gets)+'</span>'+'<span class="go">See the detail <span class="arr">→</span></span></button>';
   }).join("");
   jg.addEventListener("click",function(e){
     var b = e.target.closest("[data-go]"); if(!b) return;
@@ -1072,10 +1095,10 @@ body.lab-on .g-row.lab-row{display:grid}
     if(ri===0) h+='';
     h+='<div class="pause" style="left:'+pct(d(2026,12,21))+';width:'+pct(12)+'"></div>';
     r.bars.forEach(function(b){
-      h+='<button type="button" class="bar '+b.cls+'" style="left:'+pct(b.a)+';width:'+pct(b.b-b.a+1)+'" data-t="'+esc(b.t)+'" data-x="'+esc(b.x)+'" aria-label="'+esc(b.t+": "+b.x)+'">'+(b.nolabel?'':'<span>'+esc(b.t)+'</span>')+'</button>';
+      h+='<button type="button" class="bar '+b.cls+'" style="--d:'+(ri*110)+'ms;left:'+pct(b.a)+';width:'+pct(b.b-b.a+1)+'" data-t="'+esc(b.t)+'" data-x="'+esc(b.x)+'" aria-label="'+esc(b.t+": "+b.x)+'">'+(b.nolabel?'':'<span>'+esc(b.t)+'</span>')+'</button>';
     });
     (r.miles||[]).forEach(function(m){
-      h+='<button type="button" class="mile'+(m.key?' key':'')+(m.lab?' labm':'')+'" style="left:'+pct(m.at+.5)+'" data-t="'+esc(m.t)+'" data-x="'+esc(m.x)+'" aria-label="'+esc(m.t+": "+m.x)+'"></button>';
+      h+='<button type="button" class="mile'+(m.key?' key':'')+(m.lab?' labm':'')+'" style="--d:'+(ri*110+550)+'ms;left:'+pct(m.at+.5)+'" data-t="'+esc(m.t)+'" data-x="'+esc(m.x)+'" aria-label="'+esc(m.t+": "+m.x)+'"></button>';
     });
     h+='</div></div>';
   });
@@ -1168,6 +1191,50 @@ body.lab-on .g-row.lab-row{display:grid}
     if(cur>=0){ var a=links[cur], box=a.parentNode; if(a.offsetLeft < box.scrollLeft || a.offsetLeft+a.offsetWidth > box.scrollLeft+box.clientWidth) box.scrollLeft=a.offsetLeft-16; }
   }
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  /* ---------- motion ---------- */
+  (function(){
+    if(reduce || !("IntersectionObserver" in window)) return;
+    var root=document.documentElement;
+    // section reveals, staggered among siblings
+    var sel=".sec-head,.arc,.journey,.changes>div,.facts,.chips,.ov-row,.lab,.cols3>div,.deliv,.fee-bar,.fee-wrap,.pay,.two>div,.gantt-wrap,.g-list,.firm,.case,.refs,.rec,.closing h2,.closing .thanks,.contact";
+    var els=Array.prototype.slice.call(document.querySelectorAll(sel));
+    var vh=window.innerHeight;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ var t=en.target; t.classList.add("in"); io.unobserve(t); setTimeout(function(){ t.classList.remove("rvl","in"); t.style.removeProperty("--rd"); },1400); } });
+    },{rootMargin:"0px 0px -8% 0px",threshold:.08});
+    els.forEach(function(el){
+      if(el.getBoundingClientRect().top < vh) return; // already on screen at load: leave as is
+      var sib=el.parentNode?Array.prototype.filter.call(el.parentNode.children,function(c){return c.matches&&c.matches(sel);}):[];
+      var i=Math.max(0,sib.indexOf(el));
+      el.style.setProperty("--rd",Math.min(i,5)*90+"ms");
+      el.classList.add("rvl"); io.observe(el);
+    });
+    root.classList.add("anim");
+    // count-up figures
+    function countUp(el){
+      var m=el.firstChild && el.firstChild.nodeType===3 ? el.firstChild.nodeValue.match(/^([^0-9]*)([0-9][0-9.,]*)(.*)$/) : null;
+      if(!m) return;
+      var pre=m[1], numStr=m[2], suf=m[3], dec=(numStr.split(".")[1]||"").length, target=parseFloat(numStr.replace(/,/g,"")), t0=null;
+      function frame(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/1100), e=1-Math.pow(1-k,3);
+        el.firstChild.nodeValue=pre+(target*e).toFixed(dec)+suf; if(k<1) requestAnimationFrame(frame); else el.firstChild.nodeValue=pre+numStr+suf; }
+      requestAnimationFrame(frame);
+    }
+    var nums=document.querySelectorAll(".stat .big,.case .result .v");
+    var io2=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ countUp(en.target); io2.unobserve(en.target); } });
+    },{threshold:.6});
+    Array.prototype.forEach.call(nums,function(n){ if(n.getBoundingClientRect().top > vh) io2.observe(n); });
+    // timeline draws in
+    var gantt=document.getElementById("gantt");
+    if(gantt.getBoundingClientRect().top > vh){
+      gantt.classList.add("armed");
+      var io3=new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting){ gantt.classList.add("drawn"); io3.disconnect(); setTimeout(function(){ gantt.classList.remove("armed"); },2200); }
+      },{threshold:.35});
+      io3.observe(gantt);
+    }
+    window.addEventListener("beforeprint",function(){ document.querySelectorAll(".rvl").forEach(function(e){e.classList.add("in");}); gantt.classList.add("drawn"); });
+  })();
 })();
 </script>
 
